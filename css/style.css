@@ -1,3 +1,17 @@
+/*
+0 -600px = phone
+600-900px = tab-port
+900-1200px = tab-land
+1200-1800px = desktop
+1800px + = big-desk
+*/
+/*
+$breakpoint argument choices
+phone
+tab-port
+tab-land
+big-desk
+*/
 @keyframes moveInLeft {
   0% {
     opacity: 0;
@@ -50,21 +64,33 @@ This defines what 1rem is.
 */
 html {
   font-size: 62.5%; }
+  @media screen and (min-width: 112.5em) {
+    html {
+      font-size: 75%; } }
+  @media screen and (max-width: 75em) {
+    html {
+      font-size: 56.25%; } }
+  @media screen and (max-width: 56.25em) {
+    html {
+      font-size: 50%; } }
 
 /*
 all the font definitions must be set on the body element, to be inherited by
 all the child elements
 */
 body {
-  box-sizing: border-box; }
+  box-sizing: border-box;
+  padding: 3rem; }
+  @media screen and (max-width: 56.25em) {
+    body {
+      padding: 0; } }
 
 body {
   font-family: "Lato", sans-serif;
   font-weight: 400;
   /* font-size: 16px; */
   line-height: 1.7;
-  color: #777;
-  padding: 3rem; }
+  color: #777; }
 
 .heading-primary {
   color: #fff;
@@ -82,12 +108,20 @@ body {
         animation-iteration-count = how many times the animation will run
         animation timing-function = pre-built timing functions*/
     animation: moveInLeft 1.4s ease-out; }
+    @media screen and (max-width: 37.5em) {
+      .heading-primary--main {
+        letter-spacing: 1rem;
+        font-size: 5rem; } }
   .heading-primary--sub {
     display: block;
     font-size: 2rem;
     font-weight: 700;
     letter-spacing: 1.75rem;
     animation: moveInRight 1.4s ease-out; }
+  @media screen and (max-width: 37.5em) {
+    .heading-primary {
+      letter-spacing: .5rem;
+      font-size: 1.5rem; } }
 
 .heading-secondary {
   font-size: 3.5rem;
@@ -102,6 +136,12 @@ body {
   .heading-secondary:hover {
     transform: skewY(2deg) skewX(15deg) scale(1.1);
     text-shadow: 0.5rem 1rem 2rem rgba(0, 0, 0, 0.2); }
+  @media screen and (max-width: 56.25em) {
+    .heading-secondary {
+      font-size: 3rem; } }
+  @media screen and (max-width: 37.5em) {
+    .heading-secondary {
+      font-size: 2.5rem; } }
 
 .heading-tertiary {
   font-size: 1.6rem;
@@ -206,8 +246,14 @@ transform: translate(-50%,-50%);
 .row {
   max-width: 114rem;
   margin: 0 auto; }
+  @media screen and (max-width: 56.25em) {
+    .row {
+      max-width: 50rem; } }
   .row:not(:last-child) {
     margin-bottom: 8rem; }
+    @media screen and (max-width: 56.25em) {
+      .row:not(:last-child) {
+        margin-bottom: 6rem; } }
   .row::after {
     content: "";
     clear: both;
@@ -216,6 +262,13 @@ transform: translate(-50%,-50%);
     float: left; }
     .row [class^="col-"]:not(:last-child) {
       margin-right: 6rem; }
+      @media screen and (max-width: 56.25em) {
+        .row [class^="col-"]:not(:last-child) {
+          margin-right: 0;
+          margin-bottom: 6rem; } }
+    @media screen and (max-width: 56.25em) {
+      .row [class^="col-"] {
+        width: 100% !important; } }
   .row .col-1-of-2 {
     width: calc((100% - 6rem)/2); }
   .row .col-1-of-3 {
