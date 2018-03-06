@@ -5,19 +5,34 @@
 // clip-path = make original changes on the shape of the img
 
 .header {
-    height: 95vh;
+    height: 85vh;
     background-image: linear-gradient(
         to right,
         rgba($color-primary-light, 0.8),
         rgba($color-primary-dark, 0.8)),
-        url(../img/hero.jpg);
+        url(../img/hero-small.jpg);
     background-size: cover;
     background-position: top;
     position: relative;
 
-    -webkit-clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
-    -moz-clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
-    clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+
+    @supports   (clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%)) or 
+                (-webkit-clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%)){
+        -webkit-clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+        -moz-clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+        clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+        height: 95vh;            
+    }
+
+    @media screen and   (min-resolution: 192dpi) and (min-width:56.25em),
+                        (-webkit-min-devide-pixel-ratio:2) and (min-width:56.25em),
+                        (min-width:125em){
+        background-image: linear-gradient(
+        to right,
+        rgba($color-primary-light, 0.8),
+        rgba($color-primary-dark, 0.8)),
+        url(../img/hero.jpg);
+    }
 
     @include respond(phone){
     -webkit-clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
