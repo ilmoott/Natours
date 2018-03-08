@@ -16,8 +16,7 @@
     position: relative;
 
 
-    @supports   (clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%)) or 
-                (-webkit-clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%)){
+    @supports   (clip-path: polygon(0 0)) or (-webkit-clip-path: polygon(0 0)){
         -webkit-clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
         -moz-clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
         clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
@@ -58,10 +57,7 @@ transform: translate(-50%,-50%);
 */
 
     &__text-box{
-        position: absolute;
-        top: 40%;
-        left: 50%;
-        transform: translate(-50%,-50%);
+        @include absCenter;
     
         text-align: center;
     }

@@ -50,9 +50,9 @@
 
         @include respond(tab-port){
             transform: skewX(0);
-    
         }
     }
+    
 
     &__img{
         height: 100%;
